@@ -66,7 +66,7 @@
 			transform-origin: left top;
 			backface-visibility: hidden;
 			position:absolute; 
-			z-index: 2500;
+			z-index: 500;
 		}
 		#scope{    
 			left: 50%;
@@ -89,7 +89,7 @@
 		 .btn {
 			position: absolute;
 			width:200px;
-			z-index:2100;
+			z-index:200;
 			padding: 0.7em 2.1em 0.8em;
 			border-radius: 10px;
 			margin: 8px 8px 8px 8px;
@@ -178,7 +178,6 @@
 <script charset="utf-8">
 	var state = 0;
 	var installNow = false;
-	var redirectLink;
 
 	var currOrient = "";
 	window.oncontextmenu = function(event) {
@@ -190,12 +189,6 @@
 		handleSize();
 	};
 	var currOrient = "";
-	
-	function gameSettings(){
-		if (/android/i.test(navigator.userAgent)) redirectLink = 'https://play.google.com/store/apps/details?id=com.funvai.jseasniper';
-		else if(/iPad|iPhone|iPod/.test(navigator.userAgent)) redirectLink = 'https://itunes.apple.com/app/id1535441769';
-		else redirectLink = 'https://play.google.com/store/apps/details?id=com.funvai.jseasniper';
-	}
 	
 	function handleSize(){
 		var vid = document.getElementById('gifimage');
@@ -293,9 +286,9 @@
 	
 	function btnevent(event){
 		if (window.mraid) {
-			mraid.open(redirectLink);
+			mraid.open('https://itunes.apple.com/app/id1535441769');
 		} else {
-			window.location = redirectLink;
+			window.location = 'https://itunes.apple.com/app/id1535441769';
 		}
 	}
 </script>
@@ -331,51 +324,11 @@
 
 	if (window.mraid) {
 		var b = function () {
-		mraid.addEventListener('viewableChange', viewableChangeHandler);
-			// The isViewable method returns whether the ad container is viewable on the screen.
-			if (mraid.isViewable()) {
-				showMyAd(); 
-			}
+			handleSize();
 		};
 		"loading" === window.mraid.getState() ? (window.mraid.addEventListener("ready", b), console.log("loading mraid")) : (b(), console.log("ready mraid"));
 	} 
-	else {
-		showMyAd();
-	}
-	
-	function showMyAd() {
-		gameSettings();
-		handleSize();
-	}
-
-	function onBlur() {
-		console.log("lefttab");
-		sound.pause();
-	};
-	function onFocus(){
-		vidSource.play();
-		console.log("came back");
-		sound.play();
-	};
-	
-	if(!window.mraid){	
-		if (/*@cc_on!@*/false) { // check for Internet Explorer
-			document.onfocusin = onFocus;
-			document.onfocusout = onBlur;
-		} else {
-			window.onfocus = onFocus;
-			window.onblur = onBlur;
-		}
-	}
-	function viewableChangeHandler(viewable) {
-		if(viewable) {
-			// If the ad is viewable, show the ad:
-			onFocus(); 
-		} else {
-			// If not, pause the ad.
-			onBlur();
-		}
-	}
+	else handleSize();
 
 	const canvas = document.getElementById('gameCanvas');
 	const ctx = canvas.getContext('2d');
@@ -448,7 +401,15 @@
 		mouse.click = false;
 		scopetimer = 0;
 	});
-	
+	function onBlur() {
+		console.log("lefttab");
+		sound.pause();
+	};
+	function onFocus(){
+		vidSource.play();
+		console.log("came back");
+		sound.play();
+	};
 	class Crosshair {
 		constructor(){
 			this.x = canvas.width/2;
@@ -518,5 +479,13 @@
 		requestAnimationFrame(animate);
 	}
 	animate();
+	
+	if (/*@cc_on!@*/false) { // check for Internet Explorer
+		document.onfocusin = onFocus;
+		document.onfocusout = onBlur;
+	} else {
+		window.onfocus = onFocus;
+		window.onblur = onBlur;
+	}
 </script>
 </html>>
