@@ -205,8 +205,7 @@
 		
 		if(window.innerWidth < window.innerHeight){
 			var btn = document.getElementById("btn");
-			if(btn.className == "btn2 red")
-			{
+			
 				btn.style.top = 5+"%";
 				btn.style.left = 80+"%";
 				btn.style.width = 100+"px";
@@ -214,24 +213,15 @@
 				{
 					btn.style.width = 70+"px";
 				}
-			} else {
-				btn.style.top = 90+"%";
-				btn.style.left = 50+"%";
-				btn.style.width = 200+"px";
-			}
+			
 		}
 		else {
 			var btn = document.getElementById("btn");
-			if(btn.className == "btn2 red")
-			{
+			
 				btn.style.top = 10+"%";
 				btn.style.left = 85+"%";
 				btn.style.width = 100+"px";
-			} else {
-				btn.style.top = 90+"%";
-				btn.style.left = 50+"%";
-				btn.style.width = 200+"px";
-			}
+			
 		}
 	}
 	function resetCSS(){
@@ -267,7 +257,7 @@
 			vid.currentTime = 0;
 			vid.play();
 			vid.style.visibility = 'visible';
-			document.getElementById("btn").className = "btn red";
+			document.getElementById("btn").className = "btn2 red";
 			handleSize();
 			state++;
 			
@@ -285,7 +275,7 @@
 		if(state==1)
 		{			
 			var btn = document.getElementById("btn");
-			btn.className = "btn red";
+			btn.className = "btn2 red";
 			btn.style.opacity=1;
 			btn.style.zIndex = 200;
 		}
