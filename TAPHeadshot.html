@@ -199,7 +199,8 @@
 		else if(/iPad|iPhone|iPod/.test(navigator.userAgent)) redirectLink = 'https://itunes.apple.com/app/id1535441769';
 		else redirectLink = 'https://play.google.com/store/apps/details?id=com.funvai.jseasniper';
 	}
-	window.addEventListener("deviceorientation", handleSize, true);
+	
+	if (window.mraid) mraid.addEventListener("orientationchange", handleSize);  
 	
 	function handleSize(){
 		var vid = document.getElementById('gifimage');
