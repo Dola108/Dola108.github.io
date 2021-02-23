@@ -53,6 +53,9 @@
             transform: translate(-50%, -50%);
 			display:none;
 		}
+		video::-webkit-media-controls {
+			display: none !important; 
+		}				
 		canvas {
             top: 50%;
 			left: 50%;
@@ -196,7 +199,7 @@
 		else if(/iPad|iPhone|iPod/.test(navigator.userAgent)) redirectLink = 'https://itunes.apple.com/app/id1535441769';
 		else redirectLink = 'https://play.google.com/store/apps/details?id=com.funvai.jseasniper';
 	}
-	
+	window.addEventListener("deviceorientation", handleSize, true);
 	
 	function handleSize(){
 		var vid = document.getElementById('gifimage');
