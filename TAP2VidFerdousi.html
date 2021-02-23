@@ -259,6 +259,7 @@
 			vid.currentTime = 0;
 			vid.play();
 			vid.style.visibility = 'visible';
+			vid.style.zIndex = 2000;
 			document.getElementById("btn").className = "btn red";
 			handleSize();
 			state++;
@@ -364,6 +365,7 @@
 	}
 	var clientX, clientY;
 	var org1, org2;
+	var scopetimer=99;
 	canvas.addEventListener('touchstart', function(e){
 		mouse.click = true;
 		clientX = e.touches[0].clientX;
@@ -375,10 +377,17 @@
 		org2 = mouse.y;
 		
 		console.log("mousex: %f, mousey: %f", mouse.x, mouse.y);
+		//crosshair.alpha=0;
+		//player.alpha=0;
 		//scopeImg.style.opacity=0;
-		crosshairSprite.alpha=0;
-		playerSprite.alpha=0;
-		
+		//crosshairSprite.alpha=0;
+		//playerSprite.alpha=0;
+		//if(scopetimer==99)
+		//	setTimeout(function(){
+		//		crosshair.alpha=1;
+		//		player.alpha=1;
+		//		scopetimer = 99;
+		//	},2700);
 		/*if(tl.time() < stopTime){
 			tl.play();
 		  // if the timeline has completed then restart it
@@ -390,8 +399,7 @@
 	});
 	window.addEventListener('touchend', function(e){
 		mouse.click = false;
-		crosshair.alpha=0;
-		player.imgSrc=null;
+		scopetimer = 0;
 	});
 	function onBlur() {
 		console.log("lefttab");
