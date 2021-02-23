@@ -292,10 +292,12 @@
 	}
 	
 	function btnevent(event){
+		event.preventDefault();
+		console.log("redir");
 		if (window.mraid) {
 			mraid.open(redirectLink);
 		} else {
-			window.location = redirectLink;
+			location.href = redirectLink;
 		}
 	}
 </script>
