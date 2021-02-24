@@ -198,6 +198,12 @@
 		else redirectLink = 'https://play.google.com/store/apps/details?id=com.funvai.jseasniper';
 	}
 	
+	if (window.mraid) mraid.addEventListener("orientationchange", Orientation);  
+	else window.addEventListener("orientationchange", function(event) {
+		  console.log("the orientation of the device is now " + event.target.screen.orientation.angle);
+		  handleSize();
+		});
+		
 	function handleSize(){
 		var vid = document.getElementById('gifimage');
 		var vidSource = document.getElementById('vidsource');
