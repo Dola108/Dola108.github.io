@@ -4455,21 +4455,21 @@ ig.module("game.entities.game-control")
                 }
             },
 
-            coinspeed: 1000,
+            coinspeed: 1200,
             cointrack: 0,
             Ctrack: 0,
             drawCoinset1: function (image1, image2, image3, anc1, anc2, anc3, scale) {
 
                 if (MJS.view.viewport.orientation.portrait) {
-                    this.coin1track = 0;
-                    this.coinspeed1 -= 4;
-                    if (this.coinspeed1 < -500) {
-                        this.coinspeed1 = 1000;
+                    this.cointrack = 1;
+                    this.coinspeed -= 7;
+                    if (this.coinspeed < -500) {
+                        this.coinspeed = 1000;
                     }
                     var c = ig.system.context;
                     c.save();
                     this.Ctrack = 460;
-                    c.translate(this.coinspeed1 + anc1, 550);
+                    c.translate(this.coinspeed + anc1, 550);
                     c.scale((786 / 300) * 0.1, (655 / 250) * 0.1),
                         image1.draw(1, 1),
                         c.restore();
@@ -4511,7 +4511,7 @@ ig.module("game.entities.game-control")
 
                 if (MJS.view.viewport.orientation.portrait) {
                     this.coin1track = 0;
-                    this.coinspeed1 -= 4;
+                    this.coinspeed1 -= 7;
                     if (this.coinspeed1 < -500) {
                         this.coinspeed1 = 1000;
                     }
@@ -5212,9 +5212,10 @@ ig.module("game.entities.game-control")
             blustposY: 0,
             diff: 0,
             collision: function () {
+
                 if (this.redcarpos != null && this.playerpos != null) {
                     if (this.redcarpos <= this.playerpos + 10 && this.playertrackcount == this.redtrack) {
-                        if (this.redcarpos > this.playerpos) {
+                        if (this.redcarpos > this.playerpos-100) {
                             this.blustposX = this.playerpos - 140;
                             this.blustposY = this.track;
                             this.blustdetect = 1;
@@ -5228,9 +5229,10 @@ ig.module("game.entities.game-control")
 
                     }
                 }
+
                 if (this.yellowcarpos != null && this.playerpos != null) {
                     if (this.yellowcarpos <= this.playerpos + 10 && this.playertrackcount == this.yellowtrack) {
-                        if (this.yellowcarpos > this.playerpos) {
+                        if (this.yellowcarpos > this.playerpos-100) {
                             this.blustposX = this.playerpos - 140;
                             this.blustposY = this.Ytrack;
                             this.blustdetect = 1;
@@ -5243,9 +5245,10 @@ ig.module("game.entities.game-control")
 
                     }
                 }
+
                 if (this.policecarpos != null && this.playerpos != null) {
                     if (this.policecarpos <= this.playerpos + 10 && this.playertrackcount == this.policetrack) {
-                        if (this.policecarpos > this.playerpos) {
+                        if (this.policecarpos > this.playerpos-100) {
                             this.blustposX = this.playerpos - 140;
                             this.blustposY = this.Ptrack;
                             this.blustdetect = 1;
@@ -5258,21 +5261,24 @@ ig.module("game.entities.game-control")
 
                     }
                 }
+
                 if (this.coinspeed <= this.playerpos + 10 && this.playertrackcount == this.cointrack) {
-                    if (this.coinspeed > this.playerpos) {
+                    if (this.coinspeed > this.playerpos-100) {
                         this.coinspeed = 1000;
                         this.score += 30;
                     }
 
                 }
+
                 if (this.coinspeed1 <= this.playerpos + 10 && this.playertrackcount == this.coin1track) {
-                    if (this.coinspeed1 > this.playerpos) {
+                    if (this.coinspeed1 > this.playerpos-100) {
                         this.coinspeed1 = 1000;
                         this.score += 30;
                     }
                 }
+
                 if (this.stonespeed <= this.playerpos + 10 && this.playertrackcount == this.stonetrack) {
-                    if (this.stonespeed > this.playerpos) {
+                    if (this.stonespeed > this.playerpos-150) {
                         this.blustposX = this.playerpos - 140;
                         this.blustposY = this.strack;
                         this.blustdetect = 1;
