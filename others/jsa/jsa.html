@@ -239,9 +239,9 @@
         }
     </style>
     <script>
-        var clickTag = "https://play.google.com/store/apps/details?id=com.funvai.policevsthief";
-        if (/android/i.test(navigator.userAgent)) clickTag = 'https://play.google.com/store/apps/details?id=com.funvai.policevsthief';
-        else if (/iPad|iPhone|iPod/.test(navigator.userAgent)) clickTag = 'https://apps.apple.com/app/id1542502766';
+        var clickTag = "https://play.google.com/store/apps/details?id=com.funvai.jseasniper";
+        if (/android/i.test(navigator.userAgent)) clickTag = "https://play.google.com/store/apps/details?id=com.funvai.jseasniper";
+        else if (/iPad|iPhone|iPod/.test(navigator.userAgent)) clickTag = "https://apps.apple.com/app/jurassic-sniper-3d/id1535441769";
     </script>
 
     <script>
@@ -282,41 +282,45 @@
     <script>
         var initTime = new Date().getTime();
         var gameover = 0, gameTimeout;
-
+        var clickcount = 0;
         function clickthrough(event) {
             event.preventDefault();
+            if (clickcount < 2) {
+                if (gameover != 1) {
+                    var newTime = new Date().getTime();
+                    gameover = 1;
+                    //if(newTime >= initTime+500)
+                    //{
+                    initTime = new Date().getTime();
+                    console.log("state 00: " + initTime);
+                    console.log("state val: " + state);
+                    missedStart = 0;
 
-            if (gameover != 1) {
-                var newTime = new Date().getTime();
-                gameover = 1;
-                //if(newTime >= initTime+500)
-                //{
-                initTime = new Date().getTime();
-                console.log("state 00: " + initTime);
-                console.log("state val: " + state);
-                missedStart = 0;
-
-                var vid = document.getElementById('gifimage2');
-                vid.style.visibility = 'visible';
-                document.getElementById("btn").className = "btn2 red";
-                handleSize();
-                state++;
-
-                if (gameTimeout) clearTimeout(gameTimeout);
-                gameTimeout = setTimeout(function () {
-                    vid.style.visibility = 'hidden';
-                    gameover = 0;
+                    var vid = document.getElementById('gifimage2');
+                    vid.style.visibility = 'visible';
                     document.getElementById("btn").className = "btn2 red";
                     handleSize();
-                }, 2700);
-                //}
+                    state++;
+
+                    if (gameTimeout) clearTimeout(gameTimeout);
+                    gameTimeout = setTimeout(function () {
+                        vid.style.visibility = 'hidden';
+                        gameover = 0;
+                        document.getElementById("btn").className = "btn2 red";
+                        handleSize();
+                    }, 2400);
+                }
+                if (state == 1) {
+                    var btn = document.getElementById("btn");
+                    btn.className = "btn2 red";
+                    btn.style.opacity = 1;
+                    btn.style.zIndex = 200;
+                }
+                ++clickcount;
+            } else if (clickcount == 2){
+                btnevent(event);
             }
-            if (state == 1) {
-                var btn = document.getElementById("btn");
-                btn.className = "btn2 red";
-                btn.style.opacity = 1;
-                btn.style.zIndex = 200;
-            }
+
         }
 
         function btnevent(event) {
