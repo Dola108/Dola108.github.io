@@ -537,7 +537,7 @@
 			} else
 			{
 				this.alpha = 1;
-				this.radius = 65;
+				this.radius = 95;
 				(this.goReverse)? this.angle2-=0.013: this.angle2+=0.006;
 			
 				this.tapA+=0.02;
@@ -570,7 +570,7 @@
 			{
 				ctx.save();
 				ctx.globalAlpha = this.alpha2;
-				ctx.translate(this.x+45, this.y-30);
+				ctx.translate(this.x+75, this.y-30);
 				ctx.scale(this.tapR, this.tapR);
 				ctx.drawImage(this.sprite2, 0, 0, this.sprite2.width, this.sprite2.height, 0 - this.sprite2.width/4, 0 - this.sprite2.width/4, this.sprite2.width * 0.5, this.sprite2.height * 0.5);
 				ctx.restore();
