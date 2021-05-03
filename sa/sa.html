@@ -357,6 +357,9 @@
 	const card2Sprite = new Image();
 	card2Sprite.src = 'card2.png';
 	
+	const glow = new Image();
+	glow.src = 'glow.png';
+	
 	if(window.innerWidth>window.innerHeight) {
 		canvas.width = 300;
 		canvas.height = 250;
@@ -463,11 +466,26 @@
 			this.goReverse = 0;
 		}
 		update(){
-			this.angle+=0.05;
+			this.angle+=0.04;
 			this.radius=Math.sin(this.angle)*60+15;
 			
 			if(this.angle>1000)
 				this.angle = 0;
+				
+			if(Math.sin(this.angle)<0.9 && c2)
+			{
+				showGlow.alpha = 0;
+			} else
+			{
+				showGlow.x = canvas.width/2-10;
+				showGlow.alpha = 1;
+				console.log("jafsa");
+			}	
+			if(!(Math.sin(this.angle)>-0.9 && c1))
+			{
+				showGlow.alpha = 1;
+				showGlow.x = canvas.width/2-140;
+			}
 		}
 		draw(){
 			ctx.save();
@@ -554,19 +572,48 @@
 	}
 	const c2 = new Card2();
 	
+	class Glow {
+		constructor(){
+			this.x = canvas.width/2-140;
+			this.y = canvas.height/2-50;
+			this.angle = 0;
+			this.frameX = 0;
+			this.frameY = 0;
+			this.frame = 0;
+			this.alpha=1;
+			this.sprite = glow;
+		}
+		update(){
+			
+		}
+		draw(){
+			ctx.save();
+			ctx.globalAlpha = this.alpha;
+			ctx.translate(this.x, this.y);
+			ctx.scale(0.5, 0.5);
+			ctx.drawImage(this.sprite, 0, 0);
+			ctx.restore();
+		}
+	}
+	const showGlow = new Glow();
+	
 	function animate(){
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		if(!secondScene)
-		{bg.update();
-		bg.draw();
-		crosshair.update();
-		crosshair.draw();
-		c1.update();
-		c1.draw();
-		c2.update();
-		c2.draw();
-		player.update();
-		player.draw();}
+		{
+			bg.update();
+			bg.draw();
+			crosshair.update();
+			crosshair.draw();
+			c1.update();
+			c1.draw();
+			c2.update();
+			c2.draw();
+			showGlow.update();
+			showGlow.draw();
+			player.update();
+			player.draw();
+		}
 		requestAnimationFrame(animate);
 	}
 	animate();
