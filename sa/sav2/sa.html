@@ -668,16 +668,18 @@
 			this.frameY = 0;
 			this.frame = 0;
 			this.alpha=1;
+			this.scaleF = -0.1;
 			this.sprite = shark1;
 		}
 		update(){
-				
+			if(this.scaleF<1.1)
+				this.scaleF+=0.08;
 		}
 		draw(){
 			ctx.save();
 			ctx.globalAlpha = this.alpha;
 			ctx.translate(this.x, this.y);
-			ctx.scale(1.1, 1.1);
+			ctx.scale(this.scaleF, this.scaleF);
 			ctx.drawImage(this.sprite, 0, 0, this.sprite.width, this.sprite.height, 0 - this.sprite.width/4, 0 - this.sprite.width/4, this.sprite.width * 0.5, this.sprite.height * 0.5);
 			ctx.restore();
 		}
