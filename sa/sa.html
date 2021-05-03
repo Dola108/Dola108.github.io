@@ -40,6 +40,7 @@
 
 <style>
 	.center {
+		position: absolute;
 		max-width: 100%;
 		max-height: 100%;
 		display: block;
@@ -260,9 +261,10 @@
 				missedStart=0;
 				
 				var vid = document.getElementById('gifimage2');
+				if(id==1){
+					vid = document.getElementById('gifimage1');
+				}
 				vid.style.visibility = 'visible';
-				if(id==1)vid.setAttribute('src', ec_1);
-				else vid.setAttribute('src', ec_2);
 				console.log("setToP");
 				document.getElementById("btn").className = "btn2 red";
 				//vid.style.zIndex = 2000;
@@ -294,7 +296,8 @@
 <div class="disable-select">
 <div id="gamebox" class="parent" style="position:absolute; background-color: #2d88b3; width: 300px; height: 250px;">
 	<a href="" id="btn" style="opacity: 0.5;" onclick="btnevent(event)">Install Now</a>
-	<img id="gifimage2" class="center" style="visibility: hidden;" src="" alt="Shark Attack">
+	<img id="gifimage1" class="center" style="visibility: hidden;" src="vid1.gif" alt="Shark Attack">
+	<img id="gifimage2" class="center" style="visibility: hidden;" src="vid2.gif" alt="Shark Attack">
 	<canvas id="gameCanvas">
 	</canvas>
     <div class="centered">
@@ -341,8 +344,6 @@
 	const canvas = document.getElementById('gameCanvas');
 	const ctx = canvas.getContext('2d');
 	const scopeImg = document.getElementById('scope');
-	var vidSource = document.getElementById('gifimage2');
-	var vidSource2 = document.getElementById('gifimage2');
 	const crosshairSprite = new Image();
 	crosshairSprite.src = 'txt.png';
 	
@@ -373,10 +374,7 @@
 	ctx.font = '50px Georgia';
 	
 	let canvasPosition = canvas.getBoundingClientRect();
-	var vh = vidSource.style.height;
-	var vw = vidSource.style.width;
 	var zoomed = 0;
-	var offset = [vidSource.style.left,vidSource.style.top];
 	var secondScene = false;
 	const mouse = {
 		x: canvas.width/2,
