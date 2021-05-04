@@ -397,6 +397,7 @@
 	var secondScene = false;
 	var scrollAnim = false;
 	var vidShow = false;
+	var delayt = 3000;
 	
 	const mouse = {
 		x: canvas.width/2,
@@ -436,13 +437,17 @@
 				hand.alpha = 0;
 				hand.alpha2 = 0;
 				//buttonCallBack(event);
+				if(c1.dist<-300)
+					delayt = 4000;
+				else
+					delayt = 3000;
 				setTimeout(function(){
 					secondScene = true;
 					scrollAnim = false;
 					hand.alpha = 1;
 					hand.alpha2 = 1;
 					tutorial.sprite = congrats;
-				}, 3000);
+				}, delayt);
 				//
 			}
 		}
@@ -607,7 +612,7 @@
 						this.dist-=5;
 					if(this.dist<0 && !this.done)
 					{
-						this.dist = 450;
+						this.dist = 420;
 					}
 						
 					if(this.dist==0 && !this.done)
@@ -776,16 +781,19 @@
 			}
 			if(this.appeared)
 			{
-				this.angle+=0.03;
 				if(this.angle>100)this.angle=0;
-				this.scaleF = Math.abs(Math.sin(this.angle))/20+1.1;
+				this.scaleF = Math.abs(Math.cos(this.angle))/20+1.1;
+				this.angle+=0.035;
 			}
 		}
 		draw(){
 			ctx.save();
 			ctx.globalAlpha = this.alpha;
 			ctx.translate(this.x, this.y);
-			ctx.scale(this.scaleF, this.scaleF);
+			if(this.appeared)
+				ctx.scale(1.1, this.scaleF);
+			else
+				ctx.scale(this.scaleF, this.scaleF);
 			ctx.drawImage(this.sprite, 0, 0, this.sprite.width, this.sprite.height, 0 - this.sprite.width/4, 0 - this.sprite.width/4, this.sprite.width * 0.5, this.sprite.height * 0.5);
 			ctx.restore();
 		}
