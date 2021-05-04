@@ -761,7 +761,7 @@
 	class Shark {
 		constructor(){
 			this.x = canvas.width/2;
-			this.y = canvas.height/2;
+			this.y = canvas.height/2+80;
 			this.angle = 0;
 			this.frameX = 0;
 			this.frameY = 0;
@@ -783,18 +783,18 @@
 			{
 				if(this.angle>100)this.angle=0;
 				this.scaleF = Math.abs(Math.cos(this.angle))/20+1.1;
-				this.angle+=0.035;
+				this.angle+=0.04;
 			}
 		}
 		draw(){
 			ctx.save();
 			ctx.globalAlpha = this.alpha;
-			ctx.translate(this.x, this.y);
+			ctx.translate(this.x, this.y+this.scaleF*10);
 			if(this.appeared)
 				ctx.scale(1.1, this.scaleF);
 			else
 				ctx.scale(this.scaleF, this.scaleF);
-			ctx.drawImage(this.sprite, 0, 0, this.sprite.width, this.sprite.height, 0 - this.sprite.width/4, 0 - this.sprite.width/4, this.sprite.width * 0.5, this.sprite.height * 0.5);
+			ctx.drawImage(this.sprite, 0, 0, this.sprite.width, this.sprite.height, 0 - this.sprite.width/4, 0 - this.sprite.width/2, this.sprite.width * 0.5, this.sprite.height * 0.5);
 			ctx.restore();
 		}
 	}
