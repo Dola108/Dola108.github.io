@@ -244,7 +244,7 @@
         var redirectLink;
 
 		var image1 = new Image();
-		image1.src = "part2.gif";
+		image1.src = "headshot.gif";
 
         var currOrient = "";
         window.oncontextmenu = function (event) {
@@ -291,7 +291,7 @@
                     console.log("state val: " + state);
                     missedStart = 0;
 
-                    //var image2link = "part2.gif";
+                    //var image2link = "headshot.gif";
                     var image2source = document.getElementById('gifimage2');
                     image2source.setAttribute('src', image1.src);
                     var vid = document.getElementById('gifimage2');
@@ -354,7 +354,7 @@
         <div id="gamebox" class="parent" style="position:absolute; background-color: #2d88b3; width: 300px; height: 250px;">
             <a href="" id="btn" style="opacity: 0.5; visibility:hidden;" onclick="btnevent(event)">Install Now</a>
             <img id="gifimage" class="center" style="visibility: visible;" src="GKW.gif" alt="scope" />
-            <img id="gifimage2" class="center" style="visibility: hidden;" src="part2.gif" alt="scope" />
+            <img id="gifimage2" class="center" style="visibility: hidden;" src="headshot.gif" alt="scope" />
             <canvas id="gameCanvas" onclick="clickthrough(event)">
             </canvas>
             <div class="centered">
