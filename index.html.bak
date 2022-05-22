@@ -1,0 +1,36 @@
+<style>
+a {font-size: 100px}
+</style>
+<a href="new_jp_creative_list.html"  font-size: 0.8rem;>1. New creatives</a>
+<br>
+<a href="old_jp_creative_list.html"   font-size: 0.8rem; >2. Old creatives</a>
+<br>
+<a href="ads_with_sound.html"   font-size: 0.8rem; >3. audio</a>
+<br>
+<a href="dinoZooWithFeed.html"   font-size: 0.8rem; >4. dinoxoo</a>
+<br>
+<a href="sws.html"   font-size: 0.8rem; >5. sws</a>
+<br>
+<a href="PVT/index.html"   font-size: 0.8rem; >6. pvt</a>
+<br>
+<a href="sa/sa.html"   font-size: 0.8rem; >7. sa</a>
+<br>
+<a href="sa/sav2/sa.html"    font-size: 0.8rem; >8.1. sa 3 scene</a>
+<br>
+<a href="sa/sav2/sa2.html"    font-size: 0.8rem; >8.2. sa 3 scene 2</a>
+<br>
+<a href="sa/saCharSelect/sa.html"    font-size: 0.8rem; >9. sa scroll</a>
+<br>
+<a href="sa/saCharSelectHD/sa.html"    font-size: 0.8rem; >10. sa scroll</a>
+<br>
+<a href="others/jsa/jsa.html"    font-size: 0.8rem; >11. jsa</a>
+<br>
+<a href="sa/sniperScroll/sa.html"    font-size: 0.8rem; >12. sniper scroll</a>
+<br>
+<a href="sa/jsaScroll/sa.html"    font-size: 0.8rem; >13. jurassic sniper scroll</a>
+<br>
+<a href="sa/sniperScrollGuns/sa.html"    font-size: 0.8rem; >14. jurassic sniper scroll gun</a>
+<br>
+<a href="others/jsa/zoom.html"    font-size: 0.8rem; >15. zoom gif</a>
+<br>
+<a href="sa/sniperScrollvid2/sa.html"    font-size: 0.8rem; >14. jurassic sniper scroll shootgif</a>
